@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "assets/*": ["./assets/*"],
+      "components/*": ["./components/*"],
+      "constants/*": ["./constants/*"],
+      "redux/*": ["./redux/*"],
+      "services/*": ["./services/*"],
+      "utils/*": ["./utils/*"],
+      "api/*": ["./api/*"],
+      "helpers/*": ["./helpers/*"],
+      "customHooks/*": ["./customHooks/*"]
+    }
+  },
+  "exclude": ["node_modules", "build"]
+}
