@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
-import { GetUser } from "redux/actions/users";
+import { getUser } from "redux/actions/users";
 
 //Components
 import {
@@ -73,7 +73,7 @@ const SingleUser = () => {
   const formatDate = created_at && created_at.split("T")[0];
 
   useEffect(() => {
-    dispatch(GetUser(username));
+    dispatch(getUser(username));
   }, [dispatch, username]);
 
   return !loading ? (

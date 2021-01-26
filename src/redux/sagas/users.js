@@ -1,6 +1,6 @@
 import { fork, put, takeEvery, call } from "redux-saga/effects";
 import { GET_USER_REQUEST, GET_SINGLE_USER_REQUEST } from "redux/constants";
-import { GetUsersSuccess, GetUsersError, GetUserSuccess, GetUserError } from "redux/actions/users";
+import { setUsers, setUsersError, setUser, setUserError } from "redux/actions/users";
 import { getUsers, getSingleUser } from "api/api";
 
 function* watchGetUsers() {
@@ -14,20 +14,20 @@ function* watchGetUser() {
 function* handleGetUsers({payload}) {
   try {
     const response = yield call(getUsers, payload);
-    yield put(GetUsersSuccess(response));
+    yield put(setUsers(response));
   } catch (error) {
     console.log(error);
-    if (error && error.response) yield put(GetUsersError(error.response.data));
+    if (error && error.response) yield put(setUsersError(error.response.data));
   }
 }
 
 function* handleGetUser({payload}) {
   try {
     const response = yield call(getSingleUser, payload);
-    yield put(GetUserSuccess(response));
+    yield put(setUser(response));
   } catch (error) {
     console.log(error);
-    if (error && error.response) yield put(GetUserError(error.response.data));
+    if (error && error.response) yield put(setUserError(error.response.data));
   }
 }
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
-import { GetUsers, ChangePage } from "redux/actions/users";
+import { getUsers, changePage } from "redux/actions/users";
 //Components
 import { Typography, LinearProgress } from "@material-ui/core";
 import UserList from "components/UserList";
@@ -30,12 +30,12 @@ const HomePage = () => {
   const { loading, usersList, page } = useSelector((state) => state.users);
 
   const handleChange = (event, value) => {
-    dispatch(ChangePage(value))
+    dispatch(changePage(value))
   };
 
   useEffect(() => {
     const since = page * 10 - 10;
-    dispatch(GetUsers(since));
+    dispatch(getUsers(since));
   }, [dispatch, page]);
 
   return (
