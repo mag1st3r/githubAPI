@@ -1,11 +1,11 @@
 import {
   GET_USER_REQUEST,
-  GET_USER_SUCCESS,
-  GET_USER_ERROR,
+  SET_USER_DATA,
+  SET_USER_ERROR,
   GET_SINGLE_USER_REQUEST,
-  GET_SINGLE_USER_SUCCESS,
-  GET_SINGLE_USER_ERROR,
-  CHANGE_PAGE,
+  SET_SINGLE_USER_DATA,
+  SET_SINGLE_USER_ERROR,
+  CHANGE_PAGE
 } from "redux/constants";
 
 const initialState = {
@@ -25,13 +25,13 @@ export default function users(state = initialState, action) {
         ...state,
         loading: true,
       };
-    case GET_USER_SUCCESS:
+    case SET_USER_DATA:
       return {
         ...state,
         usersList: payload,
         loading: false,
       };
-    case GET_USER_ERROR:
+    case SET_USER_ERROR:
       return {
         ...state,
         error: payload,
@@ -42,13 +42,13 @@ export default function users(state = initialState, action) {
         ...state,
         loading: true,
       };
-    case GET_SINGLE_USER_SUCCESS:
+    case SET_SINGLE_USER_DATA:
       return {
         ...state,
         user: payload,
         loading: false,
       };
-    case GET_SINGLE_USER_ERROR:
+    case SET_SINGLE_USER_ERROR:
       return {
         ...state,
         error: payload,
